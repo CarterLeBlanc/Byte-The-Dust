@@ -11,13 +11,19 @@ public class PlayerAttackBehavior : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayer;
 
-    private float maxHealth = PlayerBaseBehavior.GetPlayerMaxHealth();
-    private float currentHealth = PlayerBaseBehavior.GetPlayerCurrentHealth();
+    float currentHealth;
 
 
-    private float attack = PlayerBaseBehavior.GetPlayerDamage();
-    private float attackRate = PlayerBaseBehavior.GetPlayerAttackRate();
+    float attack;
+    float attackRate;
     float nextAttackTime = 0f;
+
+    void Start()
+    {
+        currentHealth = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerCurrentHealth;
+        attack = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerDamage;
+        attackRate = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerAttackRate;
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,7 +32,6 @@ public class PlayerAttackBehavior : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                //NOTICE: ATTACK DOES DOUBLE DAMAGE! NEEDS TO BE FIXED
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
