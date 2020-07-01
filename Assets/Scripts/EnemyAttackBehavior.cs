@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,10 @@ public class EnemyAttackBehavior : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
 
+    float currentHealth;
 
-    private float attack = EnemyBaseBehavior.GetEnemyDamage();
-    private float maxHealth = EnemyBaseBehavior.GetEnemyMaxHealth();
-    private float currentHealth = EnemyBaseBehavior.GetEnemyCurrentHealth();
-
-    private float attackRate = EnemyBaseBehavior.GetEnemyAttackRate();
+    float attack;
+    float attackRate;
     float nextAttackTime = 0f;
 
 
@@ -22,7 +21,9 @@ public class EnemyAttackBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyCurrentHealth;
+        attack = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyDamage;
+        attackRate = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyAttackRate;
     }
 
     // Update is called once per frame
@@ -30,11 +31,8 @@ public class EnemyAttackBehavior : MonoBehaviour
     {
         if (Time.time >= nextAttackTime)
         {
-
-            //NOTICE: ATTACK DOES DOUBLE DAMAGE! NEEDS TO BE FIXED
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
-
         }
     }
 
@@ -79,6 +77,4 @@ public class EnemyAttackBehavior : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(enemyAttackPoint.position, attackRange);
     }
-
-
 }
