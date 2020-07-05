@@ -49,6 +49,7 @@ public class EnemyAttackBehavior : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy Died");
+        ScoreBehavior.Score += 10;
 
         GetComponent<Collider>().enabled = false;
         GetComponent<EnemyMovementBehavior>().enabled = false;
