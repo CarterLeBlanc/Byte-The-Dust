@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/PlayAgainScene.unity
-    guid: 88cfbf789215d6343b3b475260dbde86
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 254a2f5cf00d97e4f85e31a80a02b307
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: bc75a738b7059354f9fe4ab07e79571a
+  - enabled: 1
+    path: Assets/Scenes/ControlDisplayScene.unity
+    guid: 4b4755ef9649f1e49a25b56298e801a2
+  - enabled: 1
+    path: Assets/Scenes/PlayAgainScene.unity
+    guid: 88cfbf789215d6343b3b475260dbde86
   m_configObjects: {}
