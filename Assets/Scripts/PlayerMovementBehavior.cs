@@ -9,41 +9,27 @@ public class PlayerMovementBehavior : MonoBehaviour
     [SerializeField]
     private CharacterController controller;
 
-    private float speed = 3.0f;
+    float speed;
+
+    void Start()
+    {
+        speed = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerSpeed;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 moveDirection = new Vector3(0, 0, 0);
-
-        //Move up
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveDirection += new Vector3(0, 0, 1);
-        }
-
-        //Move down
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveDirection += new Vector3(0, 0, -1);
-        }
-
-        //Move left
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDirection += new Vector3(-1, 0, 0);
-        }
-         //Mvoe right
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection += new Vector3(1, 0, 0);
-        }
+        //Find the direction
+        Vector3 movement = new Vector3(0, 0, 0);
+        movement += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         //Normalize the movement
-        moveDirection.Normalize();
+        movement.Normalize();
 
-        moveDirection *= speed;
+        //Set the magnitude
+        movement *= speed;
 
-        controller.Move(moveDirection * Time.deltaTime);
+        //Move
+        controller.Move(movement * Time.deltaTime);
     }
 }
