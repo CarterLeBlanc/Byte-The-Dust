@@ -19,17 +19,37 @@ public class PlayerMovementBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Find the direction
-        Vector3 movement = new Vector3(0, 0, 0);
-        movement += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 moveDirection = new Vector3(0, 0, 0);
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            //Up
+            moveDirection += new Vector3(0, 0, 1);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            //Left
+            moveDirection += new Vector3(-1, 0, 0);
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            //Down
+            moveDirection += new Vector3(0, 0, -1);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            //Right
+            moveDirection += new Vector3(1, 0, 0);
+        }
 
         //Normalize the movement
-        movement.Normalize();
+        moveDirection.Normalize();
 
-        //Set the magnitude
-        movement *= speed;
+        moveDirection *= speed;
 
-        //Move
-        controller.Move(movement * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }
