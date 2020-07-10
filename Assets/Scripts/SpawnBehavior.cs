@@ -7,7 +7,7 @@ public class SpawnBehavior : MonoBehaviour
     public GameObject spawnObject;
     public Transform behaviorTarget;
 
-    static float timeInterval = 5.0f;
+    static float timeInterval = 8.0f;
     static float timeRemaining = 0.0f;
 
     // Update is called once per frame

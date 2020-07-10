@@ -16,6 +16,6 @@ public class ScoreBehavior : MonoBehaviour
         //Set the internal score to be equal to Score
         InternalScore = Score;
         //Set text to display the score
-        ScoreDisplay.GetComponent<Text>().text = "Planets Destroyed: " + InternalScore;
+        ScoreDisplay.GetComponent<Text>().text = "Score: " + InternalScore;
     }
 }
