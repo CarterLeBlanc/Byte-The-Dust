@@ -2,15 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Spawns in entities.
+/// </summary>
 public class SpawnBehavior : MonoBehaviour
 {
+    /// <summary>
+    /// Holds the object that will be spawned.
+    /// </summary>
     public GameObject spawnObject;
+    /// <summary>
+    /// Holds the spawned entity's target.
+    /// </summary>
     public Transform behaviorTarget;
 
-    static float timeInterval = 5.0f;
+    /// <summary>
+    /// Holds the amount of time between entity spawns.
+    /// </summary>
+    static float timeInterval = 8.0f;
+    /// <summary>
+    /// Holds the amount of time before the next entity will spawn.
+    /// </summary>
     static float timeRemaining = 0.0f;
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates once per frame.
+    /// </summary>
     void Update()
     {
         //Decrement remaining time
@@ -24,19 +41,11 @@ public class SpawnBehavior : MonoBehaviour
             //And spawn an instance
             SpawnInstance();
         }
-    }
+    }   
 
-    static float GetTimeInterval()
-    {
-        return timeInterval;
-    }
-
-    static void SetTimeInterval(float newTimeInterval)
-    {
-        timeInterval = newTimeInterval;
-    }
-    
-
+    /// <summary>
+    /// Spawns an instance of a chosen entity.
+    /// </summary>
     void SpawnInstance()
     {
         //Spawn an instance of spawnObject

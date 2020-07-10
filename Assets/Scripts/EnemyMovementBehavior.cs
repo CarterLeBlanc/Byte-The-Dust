@@ -4,23 +4,43 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(CharacterController))]
+
+/// <summary>
+/// Controls the enemy's movement.
+/// </summary>
 public class EnemyMovementBehavior : MonoBehaviour
 {
     [SerializeField]
+
+    /// <summary>
+    /// Holds the character controller.
+    /// </summary>
     private CharacterController controller;
 
+    /// <summary>
+    /// Holds the enemy's target.
+    /// </summary>
     public Transform target;
+    /// <summary>
+    /// Holds the enemy's navmesh.
+    /// </summary>
     private NavMeshAgent nav;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Sets variables when the game starts.
+    /// </summary>
     void Start()
     {
+        // Sets nav to the navmesh agent
         nav = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates once per frame.
+    /// </summary>
     void Update()
     {
+        //Set the enemies new destination to be the player's position
         nav.SetDestination(target.position);
     }
 }
