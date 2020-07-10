@@ -49,7 +49,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         Debug.Log("Player Died");
 
@@ -57,6 +57,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         GetComponent<PlayerMovementBehavior>().enabled = false;
         this.enabled = false;
         SceneManager.LoadScene(3);
+        ScoreBehavior.Score = 0;
     }
 
     void Attack()
