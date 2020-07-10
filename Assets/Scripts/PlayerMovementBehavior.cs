@@ -4,16 +4,18 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 public class PlayerMovementBehavior : MonoBehaviour
 {
     [SerializeField]
-    private CharacterController controller;
 
+    private NavMeshAgent nav;
     float speed;
 
     void Start()
     {
+        nav = GetComponent<NavMeshAgent>();
         speed = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerSpeed;
     }
 
@@ -36,6 +38,6 @@ public class PlayerMovementBehavior : MonoBehaviour
         movement *= speed;
 
         //Move
-        controller.Move(movement * Time.deltaTime);
+        nav.destination = transform.position + movement;
     }
 }
