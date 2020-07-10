@@ -20,6 +20,8 @@ public class EnemyMovementBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.LookAt(target);
+
         //Find the direction
         Vector3 movement = new Vector3(0, 0, 0);
         if (target != null)
