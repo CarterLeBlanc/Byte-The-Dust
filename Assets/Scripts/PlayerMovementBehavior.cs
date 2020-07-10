@@ -6,20 +6,30 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using UnityEngine.AI;
 
+/// <summary>
+/// Controls the player's movement.
+/// </summary>
 public class PlayerMovementBehavior : MonoBehaviour
 {
     [SerializeField]
 
+    /// <summary>
+    /// Holds the navmesh agent.
+    /// </summary>
     private NavMeshAgent nav;
-    float speed;
 
+    /// <summary>
+    /// Sets variables when the game starts.
+    /// </summary>
     void Start()
     {
+        //Set nav to the navmesh agent
         nav = GetComponent<NavMeshAgent>();
-        speed = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerSpeed;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates once per frame.
+    /// </summary>
     void Update()
     {
         //Find the direction
@@ -33,9 +43,6 @@ public class PlayerMovementBehavior : MonoBehaviour
 
         //Normalize the movement
         movement.Normalize();
-
-        //Set the magnitude
-        movement *= speed;
 
         //Move
         nav.destination = transform.position + movement;
