@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 7483786593990323062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 1, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 194131257237006480}
   - {fileID: 136603794152179133}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 3224533466516158623}
   attackPoint: {fileID: 194131257237006480}
-  attackRange: 0.5
+  attackRange: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1f7eafd7850884bb00987e8dd3c921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 3224533466516158623}
+  nav: {fileID: 0}
 --- !u!143 &3224533466516158623
 CharacterController:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8602615623880334424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.05}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 581601017623412125}
   m_RootOrder: 0
