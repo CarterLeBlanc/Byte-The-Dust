@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Closes the game when a button is clicked.
+/// </summary>
 public class CloseButtonBehaviour : MonoBehaviour
 {
     /**

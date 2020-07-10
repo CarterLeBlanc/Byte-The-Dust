@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Moves on to the next scene when a button is clicked.
+/// </summary>
 public class ClickButtonBehaviour : MonoBehaviour
 {
     /**
