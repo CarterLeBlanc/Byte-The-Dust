@@ -26,13 +26,13 @@ public class EnemyAttackBehavior : MonoBehaviour
         attackRate = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyAttackRate;
     }
 
-    private void OnCollisionEnter(Collision hitPlayer)
-    {
-        if(hitPlayer.gameObject.name == "Player")
-        {
-            Attack();
-        }
-    }
+    //private void OnCollisionEnter(Collision hitPlayer)
+    //{
+    //    if(hitPlayer.gameObject.name == "Player")
+    //    {
+    //        Attack();
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
