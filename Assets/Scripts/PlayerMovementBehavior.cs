@@ -19,6 +19,8 @@ public class PlayerMovementBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LookAtMouse();
+
         Vector3 moveDirection = new Vector3(0, 0, 0);
 
         if (Input.GetKey(KeyCode.W))
@@ -51,5 +53,24 @@ public class PlayerMovementBehavior : MonoBehaviour
         moveDirection *= speed;
 
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    void LookAtMouse()
+    {
+        //Get the position of the player
+        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
+
+        //Get the position of the mouse
+        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+        //Get the angle between the two points
+        float angle = GetAngleBetweenPoints(positionOnScreen, mouseOnScreen);
+
+        transform.rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f));
+    }
+
+    float GetAngleBetweenPoints(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 }
