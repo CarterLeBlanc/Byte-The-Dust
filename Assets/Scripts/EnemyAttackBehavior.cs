@@ -25,6 +25,7 @@ public class EnemyAttackBehavior : MonoBehaviour
         attack = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyDamage;
         attackRate = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyAttackRate;
     }
+    
 
     // Update is called once per frame
     void Update()
