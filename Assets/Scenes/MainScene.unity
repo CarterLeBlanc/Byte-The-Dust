@@ -586,6 +586,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6630948480616254841, guid: 193bcdc2101f9d948acd67fde8143f77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 193bcdc2101f9d948acd67fde8143f77, type: 3}
 --- !u!1 &361289112
@@ -955,6 +960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spawner (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630948480616254841, guid: 193bcdc2101f9d948acd67fde8143f77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 193bcdc2101f9d948acd67fde8143f77, type: 3}
@@ -1429,7 +1439,7 @@ PrefabInstance:
     - target: {fileID: 5179907109709249466, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7549765277247244597, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
         type: 3}
@@ -3417,6 +3427,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6630948480616254841, guid: 193bcdc2101f9d948acd67fde8143f77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 193bcdc2101f9d948acd67fde8143f77, type: 3}
 --- !u!1 &6807535150808368482
@@ -3546,6 +3561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3224533466516158623, guid: a263993eee8c5774397a75dafde5eab7, type: 3}
+    - {fileID: 2719595947998414038, guid: a263993eee8c5774397a75dafde5eab7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a263993eee8c5774397a75dafde5eab7, type: 3}
 --- !u!33 &7429623471355630851
 MeshFilter:

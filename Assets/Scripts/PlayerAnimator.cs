@@ -10,20 +10,23 @@ public class PlayerAnimator : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {        
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("Speed", speed);
-     
+        animator.SetFloat("Speed", speed);      
     }
 
-    private void OnMouseDown()
+    public void Attack()
     {
         animator.SetTrigger("Attack");
+    }
+
+    public void Death()
+    {
+        animator.SetTrigger("Death");
     }
 }

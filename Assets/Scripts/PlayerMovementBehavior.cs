@@ -18,6 +18,8 @@ public class PlayerMovementBehavior : MonoBehaviour
     /// </summary>
     private NavMeshAgent nav;
 
+
+    public PlayerAnimator animator;
     /// <summary>
     /// Sets variables when the game starts.
     /// </summary>
@@ -46,5 +48,6 @@ public class PlayerMovementBehavior : MonoBehaviour
 
         //Move
         nav.destination = transform.position + movement;
+        animator.speed = nav.desiredVelocity.magnitude / nav.speed;
     }
 }

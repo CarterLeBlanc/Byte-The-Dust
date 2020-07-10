@@ -7,10 +7,12 @@ public class PlayerAttackBehavior : MonoBehaviour
 {
     [SerializeField]
     private CharacterController controller;
+    public PlayerAnimator animator;
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayer;
+
 
     float currentHealth;
 
@@ -58,6 +60,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         this.enabled = false;
         SceneManager.LoadScene(3);
         ScoreBehavior.Score = 0;
+        animator.Death();
     }
 
     void Attack()
@@ -65,6 +68,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         //Detect enemies in range of attack
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
+        animator.Attack();
         //Damage enemies
         foreach (Collider enemy in hitEnemies)
         {
