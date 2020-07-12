@@ -25,7 +25,7 @@ public class EnemyAttackBehavior : MonoBehaviour
         attack = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyDamage;
         attackRate = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyAttackRate;
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -52,9 +52,7 @@ public class EnemyAttackBehavior : MonoBehaviour
         Debug.Log("Enemy Died");
         ScoreBehavior.Score += 10;
 
-        GetComponent<Collider>().enabled = false;
-        GetComponent<EnemyMovementBehavior>().enabled = false;
-        this.enabled = false;
+        DeleteEnemyAfterTime(3.0f);
     }
 
 
@@ -71,6 +69,15 @@ public class EnemyAttackBehavior : MonoBehaviour
             Debug.Log("Attacked player");
         }
 
+    }
+
+    IEnumerator DeleteEnemyAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        GetComponent<Collider>().enabled = false;
+        GetComponent<EnemyMovementBehavior>().enabled = false;
+        this.enabled = false;
     }
 
     private void OnDrawGizmosSelected()
