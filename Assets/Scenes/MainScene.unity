@@ -993,7 +993,7 @@ PrefabInstance:
     - target: {fileID: 4382406474771129074, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
         type: 3}
       propertyPath: enemyCurrentHealth
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5295291230644170918, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
         type: 3}
