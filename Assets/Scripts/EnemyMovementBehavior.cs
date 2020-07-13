@@ -13,11 +13,6 @@ public class EnemyMovementBehavior : MonoBehaviour
     [SerializeField]
 
     /// <summary>
-    /// Holds the enemy animator.
-    /// </summary>
-    public EnemyAnimator animator;
-
-    /// <summary>
     /// Holds the enemy's target.
     /// </summary>
     public Transform target;
@@ -25,6 +20,11 @@ public class EnemyMovementBehavior : MonoBehaviour
     /// Holds the enemy's navmesh.
     /// </summary>
     private NavMeshAgent nav;
+
+    /// <summary>
+    /// Holds the enemy animator.
+    /// </summary>
+    public EnemyAnimator animator;
 
     /// <summary>
     /// Sets variables when the game starts.
@@ -40,8 +40,8 @@ public class EnemyMovementBehavior : MonoBehaviour
     /// </summary>
     void Update()
     {
-        animator.speed = nav.desiredVelocity.magnitude / nav.speed;
         //Set the enemies new destination to be the player's position
-        nav.SetDestination(target.position);        
+        nav.SetDestination(target.position);
+        animator.speed = nav.desiredVelocity.magnitude / nav.speed;     
     }
 }

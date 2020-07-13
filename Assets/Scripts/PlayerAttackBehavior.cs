@@ -5,22 +5,43 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttackBehavior : MonoBehaviour
 {
+
     [SerializeField]
+    /// <summary>
+    ///creates the character controller
+    /// </summary>
     private CharacterController controller;
+    /// <summary>
+    ///creates the player animator
+    /// </summary>
     public PlayerAnimator animator;
 
+    /// <summary>
+    ///creates the attack point and range of the player
+    /// </summary>
     public Transform attackPoint;
     public float attackRange = 0.5f;
+
+    /// <summary>
+    ///creates the layer mask the player attacks
+    /// </summary>
     public LayerMask enemyLayer;
 
-
+    /// <summary>
+    ///sets the current health
+    /// </summary>
     float currentHealth;
 
-
+    /// <summary>
+    ///the attack and attack rate
+    /// </summary>
     float attack;
     float attackRate;
     float nextAttackTime = 0f;
 
+    /// <summary>
+    ///sets the current health, the attack, and the attack rate to the base class
+    /// </summary>
     void Start()
     {
         currentHealth = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerCurrentHealth;
@@ -28,6 +49,9 @@ public class PlayerAttackBehavior : MonoBehaviour
         attackRate = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerAttackRate;
     }
 
+    /// <summary>
+    ///keeps the player from spamming the attack button to kill enemies
+    /// </summary>
     // Update is called once per frame
     void Update()
     {
@@ -41,6 +65,9 @@ public class PlayerAttackBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///the player takes damage if hit
+    /// </summary>
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -51,21 +78,24 @@ public class PlayerAttackBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///If the player dies
+    /// </summary>
     public void Die()
     {
         Debug.Log("Player Died");
 
+        animator.Death();
+
         GetComponent<Collider>().enabled = false;
         GetComponent<PlayerMovementBehavior>().enabled = false;
 
-        //animator.Death();
-
         StartCoroutine(RemovePlayerAfterTime(3.0f));
-
-        SceneManager.LoadScene(3);
-        ScoreBehavior.Score = 0;
     }
 
+    /// <summary>
+    ///when the player goes to attack
+    /// </summary>
     void Attack()
     {
         //Detect enemies in range of attack
@@ -81,12 +111,21 @@ public class PlayerAttackBehavior : MonoBehaviour
 
     }
 
+    /// <summary>
+    ///allows the player animation to play before going to the end screen
+    /// </summary>
     IEnumerator RemovePlayerAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
+
+        SceneManager.LoadScene(3);
+        ScoreBehavior.Score = 0;
     }
 
+    /// <summary>
+    ///creates the gizmo that is the attack point
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
