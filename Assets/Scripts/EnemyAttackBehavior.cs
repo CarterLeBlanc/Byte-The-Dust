@@ -6,9 +6,11 @@ using UnityEngine;
 public class EnemyAttackBehavior : MonoBehaviour
 {
 
+    public EnemyAnimator animator;
     public Transform enemyAttackPoint;
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
+    
 
     float currentHealth;
 
@@ -52,7 +54,8 @@ public class EnemyAttackBehavior : MonoBehaviour
         Debug.Log("Enemy Died");
         ScoreBehavior.Score += 10;
 
-        DeleteEnemyAfterTime(3.0f);
+        //DeleteEnemyAfterTime(3.0f);
+        animator.Death();
     }
 
 
@@ -60,6 +63,8 @@ public class EnemyAttackBehavior : MonoBehaviour
     {
         ////Detect player in range
         Collider[] hitPlayer = Physics.OverlapSphere(enemyAttackPoint.position, attackRange, playerLayer);
+
+        animator.Attack();
 
         //Damage player
         foreach (Collider player in hitPlayer)
@@ -71,14 +76,14 @@ public class EnemyAttackBehavior : MonoBehaviour
 
     }
 
-    IEnumerator DeleteEnemyAfterTime(float time)
-    {
-        yield return new WaitForSeconds(time);
+    //IEnumerator DeleteEnemyAfterTime(float time)
+    //{
+    //    yield return new WaitForSeconds(time);
 
-        GetComponent<Collider>().enabled = false;
-        GetComponent<EnemyMovementBehavior>().enabled = false;
-        this.enabled = false;
-    }
+    //    GetComponent<Collider>().enabled = false;
+    //    GetComponent<EnemyMovementBehavior>().enabled = false;
+    //    this.enabled = false;
+    //}
 
     private void OnDrawGizmosSelected()
     {
