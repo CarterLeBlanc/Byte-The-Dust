@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,7 +77,6 @@ public class EnemyAttackBehavior : MonoBehaviour
     /// </summary>
     void Die()
     {
-        Debug.Log("Enemy Died");
         animator.Death();
         ScoreBehavior.Score += 10;
 
@@ -102,7 +100,6 @@ public class EnemyAttackBehavior : MonoBehaviour
         foreach (Collider player in hitPlayer)
         {
             player.GetComponent<PlayerAttackBehavior>().TakeDamage(attack);
-            Debug.Log("Attacked player");
         }
 
     }

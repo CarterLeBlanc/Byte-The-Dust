@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(CharacterController))]
 
 /// <summary>
 /// Controls the enemy's movement.
