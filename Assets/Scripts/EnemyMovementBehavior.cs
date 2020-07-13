@@ -13,9 +13,8 @@ public class EnemyMovementBehavior : MonoBehaviour
     [SerializeField]
 
     /// <summary>
-    /// Holds the character controller.
+    /// Holds the enemy animator.
     /// </summary>
-    private CharacterController controller;
     public EnemyAnimator animator;
 
     /// <summary>
@@ -43,7 +42,6 @@ public class EnemyMovementBehavior : MonoBehaviour
     {
         animator.speed = nav.desiredVelocity.magnitude / nav.speed;
         //Set the enemies new destination to be the player's position
-        nav.SetDestination(target.position);
-        
+        nav.SetDestination(target.position);        
     }
 }

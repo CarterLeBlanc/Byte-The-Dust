@@ -54,8 +54,13 @@ public class EnemyAttackBehavior : MonoBehaviour
         Debug.Log("Enemy Died");
         ScoreBehavior.Score += 10;
 
-        //DeleteEnemyAfterTime(3.0f);
-        animator.Death();
+        GetComponent<Collider>().enabled = false;
+        GetComponent<EnemyMovementBehavior>().enabled = false;
+        enabled = false;
+
+        //animator.Death();
+
+        RemoveEnemyAfterTime(3.0f);
     }
 
 
@@ -76,14 +81,10 @@ public class EnemyAttackBehavior : MonoBehaviour
 
     }
 
-    //IEnumerator DeleteEnemyAfterTime(float time)
-    //{
-    //    yield return new WaitForSeconds(time);
-
-    //    GetComponent<Collider>().enabled = false;
-    //    GetComponent<EnemyMovementBehavior>().enabled = false;
-    //    this.enabled = false;
-    //}
+    IEnumerator RemoveEnemyAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
 
     private void OnDrawGizmosSelected()
     {
