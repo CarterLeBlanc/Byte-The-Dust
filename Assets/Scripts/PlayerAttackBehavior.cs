@@ -55,11 +55,15 @@ public class PlayerAttackBehavior : MonoBehaviour
     {
         Debug.Log("Player Died");
 
-        DeletePlayerAfterTime(3.0f);
+        GetComponent<Collider>().enabled = false;
+        GetComponent<PlayerMovementBehavior>().enabled = false;
+
+        //animator.Death();
+
+        StartCoroutine(RemovePlayerAfterTime(3.0f));
 
         SceneManager.LoadScene(3);
         ScoreBehavior.Score = 0;
-        animator.Death();
     }
 
     void Attack()
@@ -77,13 +81,10 @@ public class PlayerAttackBehavior : MonoBehaviour
 
     }
 
-    IEnumerator DeletePlayerAfterTime(float time)
+    IEnumerator RemovePlayerAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-
-        GetComponent<Collider>().enabled = false;
-        GetComponent<PlayerMovementBehavior>().enabled = false;
-        this.enabled = false;
+        gameObject.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()

@@ -587,7 +587,8 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnObject
       value: 
-      objectReference: {fileID: 1643903530}
+      objectReference: {fileID: 5179907109709249466, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
+        type: 3}
     - target: {fileID: 6630948480616254838, guid: 193bcdc2101f9d948acd67fde8143f77,
         type: 3}
       propertyPath: behaviorTarget
@@ -962,7 +963,8 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnObject
       value: 
-      objectReference: {fileID: 1643903530}
+      objectReference: {fileID: 5179907109709249466, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
+        type: 3}
     - target: {fileID: 6630948480616254838, guid: 193bcdc2101f9d948acd67fde8143f77,
         type: 3}
       propertyPath: behaviorTarget
@@ -1072,6 +1074,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741206087}
   m_CullTransparentMesh: 0
+--- !u!1 &777230282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5179907109709249466, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 914509477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &807853366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,12 +1750,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1643903530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5179907109709249466, guid: e3b3ecd9cc48c4f428fe51fb27d985dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 914509477}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1802298228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8634c99202808e7458de472f1785a31f,
@@ -3438,7 +3440,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnObject
       value: 
-      objectReference: {fileID: 1643903530}
+      objectReference: {fileID: 777230282}
     - target: {fileID: 6630948480616254838, guid: 193bcdc2101f9d948acd67fde8143f77,
         type: 3}
       propertyPath: behaviorTarget
@@ -3484,6 +3486,11 @@ PrefabInstance:
     - target: {fileID: -6571548311619506486, guid: a263993eee8c5774397a75dafde5eab7,
         type: 3}
       propertyPath: m_Speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -6571548311619506486, guid: a263993eee8c5774397a75dafde5eab7,
+        type: 3}
+      propertyPath: m_Acceleration
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 581601017623412125, guid: a263993eee8c5774397a75dafde5eab7,

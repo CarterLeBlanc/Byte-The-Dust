@@ -18,8 +18,11 @@ public class PlayerMovementBehavior : MonoBehaviour
     /// </summary>
     private NavMeshAgent nav;
 
-
+    /// <summary>
+    /// Holds the player animator.
+    /// </summary>
     public PlayerAnimator animator;
+
     /// <summary>
     /// Sets variables when the game starts.
     /// </summary>

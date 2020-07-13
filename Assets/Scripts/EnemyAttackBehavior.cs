@@ -18,8 +18,6 @@ public class EnemyAttackBehavior : MonoBehaviour
     float attackRate;
     float nextAttackTime = 0f;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +52,12 @@ public class EnemyAttackBehavior : MonoBehaviour
         Debug.Log("Enemy Died");
         ScoreBehavior.Score += 10;
 
-        //DeleteEnemyAfterTime(3.0f);
-        animator.Death();
+        GetComponent<Collider>().enabled = false;
+        GetComponent<EnemyMovementBehavior>().enabled = false;
+
+        //animator.Death();
+
+        StartCoroutine(RemoveEnemyAfterTime(3.0f));
     }
 
 
@@ -76,14 +78,11 @@ public class EnemyAttackBehavior : MonoBehaviour
 
     }
 
-    //IEnumerator DeleteEnemyAfterTime(float time)
-    //{
-    //    yield return new WaitForSeconds(time);
-
-    //    GetComponent<Collider>().enabled = false;
-    //    GetComponent<EnemyMovementBehavior>().enabled = false;
-    //    this.enabled = false;
-    //}
+    IEnumerator RemoveEnemyAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
+    }
 
     private void OnDrawGizmosSelected()
     {
