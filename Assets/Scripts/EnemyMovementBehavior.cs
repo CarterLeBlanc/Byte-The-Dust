@@ -1,37 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(CharacterController))]
+
+/// <summary>
+/// Controls the enemy's movement.
+/// </summary>
 public class EnemyMovementBehavior : MonoBehaviour
 {
     [SerializeField]
+
+    /// <summary>
+    /// Holds the character controller.
+    /// </summary>
     private CharacterController controller;
+    public EnemyAnimator animator;
 
+    /// <summary>
+    /// Holds the enemy's target.
+    /// </summary>
     public Transform target;
-    float speed;
+    /// <summary>
+    /// Holds the enemy's navmesh.
+    /// </summary>
+    private NavMeshAgent nav;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Sets variables when the game starts.
+    /// </summary>
     void Start()
     {
-        speed = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemySpeed;
+        // Sets nav to the navmesh agent
+        nav = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates once per frame.
+    /// </summary>
     void Update()
     {
-        //Find the direction
-        Vector3 movement = new Vector3(0, 0, 0);
-        if (target != null)
-        {
-            movement = target.position - transform.position;
-            movement.Normalize();
-        }
-
-        //Set the magnitude
-        movement *= speed;
-
-        //Move
-        controller.Move(movement * Time.deltaTime);
+        animator.speed = nav.desiredVelocity.magnitude / nav.speed;
+        //Set the enemies new destination to be the player's position
+        nav.SetDestination(target.position);
+        
     }
 }

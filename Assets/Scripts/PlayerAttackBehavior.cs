@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttackBehavior : MonoBehaviour
 {
     [SerializeField]
     private CharacterController controller;
+    public PlayerAnimator animator;
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayer;
+
 
     float currentHealth;
 
@@ -48,13 +51,15 @@ public class PlayerAttackBehavior : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         Debug.Log("Player Died");
 
-        GetComponent<Collider>().enabled = false;
-        GetComponent<PlayerMovementBehavior>().enabled = false;
-        this.enabled = false;
+        DeletePlayerAfterTime(3.0f);
+
+        SceneManager.LoadScene(3);
+        ScoreBehavior.Score = 0;
+        animator.Death();
     }
 
     void Attack()
@@ -62,6 +67,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         //Detect enemies in range of attack
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
+        animator.Attack();
         //Damage enemies
         foreach (Collider enemy in hitEnemies)
         {
@@ -69,6 +75,15 @@ public class PlayerAttackBehavior : MonoBehaviour
             enemy.GetComponent<EnemyAttackBehavior>().TakeDamage(attack);
         }
 
+    }
+
+    IEnumerator DeletePlayerAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        GetComponent<Collider>().enabled = false;
+        GetComponent<PlayerMovementBehavior>().enabled = false;
+        this.enabled = false;
     }
 
     private void OnDrawGizmosSelected()

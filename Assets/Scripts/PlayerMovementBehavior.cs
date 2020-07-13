@@ -1,35 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
+/// <summary>
+/// Controls the player's movement.
+/// </summary>
 public class PlayerMovementBehavior : MonoBehaviour
 {
     [SerializeField]
-    private CharacterController controller;
 
-    float speed;
+    /// <summary>
+    /// Holds the navmesh agent.
+    /// </summary>
+    private NavMeshAgent nav;
 
+
+    public PlayerAnimator animator;
+    /// <summary>
+    /// Sets variables when the game starts.
+    /// </summary>
     void Start()
     {
-        speed = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerSpeed;
+        //Set nav to the navmesh agent
+        nav = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates once per frame.
+    /// </summary>
     void Update()
     {
         //Find the direction
-        Vector3 movement = new Vector3(0, 0, 0);
-        movement += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        
+        //Rotate the player to face the direction it is moving in
+        transform.rotation = Quaternion.LookRotation(movement);
 
         //Normalize the movement
         movement.Normalize();
 
-        //Set the magnitude
-        movement *= speed;
-
         //Move
-        controller.Move(movement * Time.deltaTime);
+        nav.destination = transform.position + movement;
+        animator.speed = nav.desiredVelocity.magnitude / nav.speed;
     }
 }
