@@ -57,12 +57,10 @@ public class PlayerAttackBehavior : MonoBehaviour
 
         GetComponent<Collider>().enabled = false;
         GetComponent<PlayerMovementBehavior>().enabled = false;
-        enabled = false;
-
 
         //animator.Death();
 
-        //RemovePlayerAfterTime(3.0f);
+        StartCoroutine(RemovePlayerAfterTime(3.0f));
 
         SceneManager.LoadScene(3);
         ScoreBehavior.Score = 0;
@@ -86,6 +84,7 @@ public class PlayerAttackBehavior : MonoBehaviour
     IEnumerator RemovePlayerAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()
