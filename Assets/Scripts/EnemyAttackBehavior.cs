@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Contains all functions needed for the enemy to engage in combat.
+/// </summary>
 public class EnemyAttackBehavior : MonoBehaviour
 {
     /// <summary>

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls animations for the enemy.
+/// </summary>
 public class EnemyAnimator : MonoBehaviour
 {
     /// <summary>
