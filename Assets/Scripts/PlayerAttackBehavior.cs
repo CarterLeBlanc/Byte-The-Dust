@@ -83,8 +83,7 @@ public class PlayerAttackBehavior : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        Debug.Log("Player Died");
-
+        
         animator.Death();
 
         GetComponent<Collider>().enabled = false;
@@ -105,7 +104,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         //Damage enemies
         foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log("Attacked enemy");
+            
             enemy.GetComponent<EnemyAttackBehavior>().TakeDamage(attack);
         }
 
