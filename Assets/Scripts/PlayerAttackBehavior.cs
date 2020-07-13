@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttackBehavior : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class PlayerAttackBehavior : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         GetComponent<PlayerMovementBehavior>().enabled = false;
         this.enabled = false;
+        SceneManager.LoadScene(3);
     }
 
     void Attack()

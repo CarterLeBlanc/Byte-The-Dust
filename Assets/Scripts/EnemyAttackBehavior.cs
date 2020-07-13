@@ -26,6 +26,14 @@ public class EnemyAttackBehavior : MonoBehaviour
         attackRate = GameObject.Find("Enemy").GetComponent<EnemyBaseBehavior>().enemyAttackRate;
     }
 
+    //private void OnCollisionEnter(Collision hitPlayer)
+    //{
+    //    if(hitPlayer.gameObject.name == "Player")
+    //    {
+    //        Attack();
+    //    }
+    //}
+
     // Update is called once per frame
     void Update()
     {
@@ -59,7 +67,7 @@ public class EnemyAttackBehavior : MonoBehaviour
 
     void Attack()
     {
-        //Detect player in range
+        ////Detect player in range
         Collider[] hitPlayer = Physics.OverlapSphere(enemyAttackPoint.position, attackRange, playerLayer);
 
         //Damage player

@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 public class PlayerMovementBehavior : MonoBehaviour
 {
     [SerializeField]
-    private CharacterController controller;
 
+    private NavMeshAgent nav;
     float speed;
 
     void Start()
     {
+        nav = GetComponent<NavMeshAgent>();
         speed = GameObject.Find("Player").GetComponent<PlayerBaseBehavior>().playerSpeed;
     }
 
@@ -20,8 +23,13 @@ public class PlayerMovementBehavior : MonoBehaviour
     void Update()
     {
         //Find the direction
-        Vector3 movement = new Vector3(0, 0, 0);
-        movement += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        
+        //Rotate the player to face the direction it is moving in
+        transform.rotation = Quaternion.LookRotation(movement);
 
         //Normalize the movement
         movement.Normalize();
@@ -30,6 +38,6 @@ public class PlayerMovementBehavior : MonoBehaviour
         movement *= speed;
 
         //Move
-        controller.Move(movement * Time.deltaTime);
+        nav.destination = transform.position + movement;
     }
 }

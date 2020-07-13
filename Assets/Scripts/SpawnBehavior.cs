@@ -9,8 +9,6 @@ public class SpawnBehavior : MonoBehaviour
 
     static float timeInterval = 5.0f;
     static float timeRemaining = 0.0f;
-    static float numberSpawned = 0.0f;
-    static float spawnLimit = 5.0f;
 
     // Update is called once per frame
     void Update()
@@ -19,12 +17,10 @@ public class SpawnBehavior : MonoBehaviour
         timeRemaining -= Time.deltaTime;
 
         //If there is no time remaining...
-        if (timeRemaining <= 0 && numberSpawned < spawnLimit)
+        if (timeRemaining <= 0 )
         {
             //Reset the timer
             timeRemaining = timeInterval;
-            //Increase numberSpawned
-            numberSpawned++;
             //And spawn an instance
             SpawnInstance();
         }
@@ -39,16 +35,7 @@ public class SpawnBehavior : MonoBehaviour
     {
         timeInterval = newTimeInterval;
     }
-
-    static float GetSpawnLimit()
-    {
-        return spawnLimit;
-    }
-
-    static void SetSpawnLimit(float newSpawnLimit)
-    {
-        spawnLimit = newSpawnLimit;
-    }
+    
 
     void SpawnInstance()
     {
