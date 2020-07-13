@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Contains all functions needed for the player to engage in combat.
+/// </summary>
 public class PlayerAttackBehavior : MonoBehaviour
 {
 
